@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// (C) Alewinn / Industries Indigenes
 
 #pragma once
 
