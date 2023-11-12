@@ -4,8 +4,10 @@
 #include "Characters/ScalePlayerCharacter.h"
 
 #include "Camera/CameraComponent.h"
+#include "Components/SphereComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Gameplay/ScaleSpringArmComponent.h"
 
 AScalePlayerCharacter::AScalePlayerCharacter()
 {
@@ -16,10 +18,14 @@ AScalePlayerCharacter::AScalePlayerCharacter()
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.f,0.f,720.f); 
 	
-	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
-	CameraBoom->SetupAttachment(GetRootComponent());
+	CameraBoom = CreateDefaultSubobject<UScaleSpringArmComponent>(TEXT("SpringArm"));
+	CameraBoom->SetupAttachment(GetMesh());
 	CameraBoom->TargetArmLength = 600.f;
 	CameraBoom->bUsePawnControlRotation = true;
+
+	// CamCollision = CreateDefaultSubobject<USphereComponent>(TEXT("CameraTarget"));
+	// CamCollision->SetupAttachment(CameraBoom);
+	// CamCollision->SetSphereRadius(50);	
 	
 	ViewCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	ViewCamera->SetupAttachment(CameraBoom);

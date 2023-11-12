@@ -6,8 +6,9 @@
 #include "ScaleBaseCharacter.h"
 #include "ScalePlayerCharacter.generated.h"
 
+class USphereComponent;
 class UCameraComponent;
-class USpringArmComponent;
+class UScaleSpringArmComponent;
 /**
  * 
  */
@@ -28,9 +29,12 @@ protected:
 	void MoveCamY(float Value);
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	USpringArmComponent* CameraBoom;
+	UScaleSpringArmComponent* CameraBoom;
 	
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UCameraComponent* ViewCamera;
+
+	// UPROPERTY(VisibleAnywhere)
+	// USphereComponent* CamCollision;
 	
 };
